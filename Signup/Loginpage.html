@@ -5,7 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FCRIT Canteen | Login</title>
-    <link rel="icon" href="./img/fcritlogo.png">
+    <link rel="icon" href="/StudentAndStaff/img/fcritlogo.png">
+    <script >
+      var dict = {};
+      dict['pass@120'] = 'farhan@gmail.com';
+      dict['pass@121'] = 'Kington@gmail.com';
+      dict['pass@122'] = 'Vikas@gmail.com';
+      dict['pass@123'] = 'jaydip@gmail.com';
+      dict['pass@124'] = 'admin.@gmail.com';
+      dict['pass@125'] = 'canteen@gmail.com';
+
+function fun(){
+  
+  var gmail=document.getElementById('email');
+  var password=document.getElementById('password');
+
+  if (gmail !== dict[password]) {
+    console.log("Email/Password is incorrect");
+  }
+
+  if (gmail === 'admin.@gmail.com') {
+    window.open('/Admin/Admin.html')
+  }
+
+  if (gmail === 'canteen.@gmail.com') {
+    window.open('/CanteenStaff/canteenstaf.html');
+  }
+
+  window.open('/StudentAndStaff/Menu.html');
+};
+    </script>
     <link
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
@@ -94,16 +123,16 @@
     <div id="container">
       <div class="form-wrap">
         <h1>Login</h1>
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
+        <form action="Signup.js" method="post">
+          <div class="form-group" >
+            <label for="email" id="email">Email</label>
             <input type="email" name="email" id="email" />
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password" id="password">Password</label>
             <input type="password" name="password" id="password" />
           </div>
-        <button type="submit" class="btn"><a href="Student and Staff/index.html"> Login </a></button>
+        <button type="submit" class="btn" onClick="fun()"> Login</button>
         </form>
       </div>
     </div>
