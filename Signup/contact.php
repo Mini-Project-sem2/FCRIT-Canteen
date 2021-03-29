@@ -1,3 +1,10 @@
+<?php
+include('session.php');
+if(!isset($_SESSION['login_user'])){
+header("location: loginpage.php"); // Redirecting To Home Page
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,7 @@
   <meta name="description" content="Welcome to the most extraordinary hotel in Boston Massachusetts">
   <meta name="keywords" content="hotel,boston hotel,new england hotel">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  <link rel="icon" href="./img/fcritlogo.png">
+  <link rel="icon" href="../StudentAndStaff/img/fcritlogo.png">
   <link rel="stylesheet" href="../Signup/css/style.css">
   <title>FCRIT Canteen | Contact</title>
 </head>
@@ -15,10 +22,11 @@
   <header>
     <nav id="navbar">
       <div class="container">
-        <h1 class="logo"><a href="index.html">FCRIT Canteen</a></h1>
+        <h1 class="logo">FCRIT Canteen</h1>
         <ul>
-          <li><a href="Menu.html">Menu</a></li>
-          <li><a class="current" href="contact.html">Contact</a></li>
+          <li><a href="../StudentAndStaff/Menu.php">Menu</a></li>
+          <li><a class="current" href="contact.php">Contact</a></li>
+          <li><a href="logout.php"><h4>LOGOUT</h4></a></li>
         </ul>
       </div>
     </nav>

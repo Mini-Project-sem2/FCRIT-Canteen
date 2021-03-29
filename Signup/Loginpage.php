@@ -1,44 +1,35 @@
-<!DOCTYPE html>
+<?php
+include('login.php'); // Includes Login Script
+if(isset($_SESSION['login_user'])){
+  if($username == 'admin'){
+    header("location: adminp.php");
+    mysqli_close($conn); // Closing Connection
+ }elseif ($username == 'canteen') {
+    header("location: canteen.php"); // Redirecting To Profile Page
+    mysqli_close($conn); // Closing Connection
+ }else {
+    header("location:  contact.php"); // Redirecting To Profile Page
+    mysqli_close($conn); // Closing Connection
+ }
+}
+?>
+
+<DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FCRIT Canteen | Login</title>
-    <link rel="icon" href="/StudentAndStaff/img/fcritlogo.png">
-    <script >
-      var dict = {};
-      dict['pass@120'] = 'farhan@gmail.com';
-      dict['pass@121'] = 'Kington@gmail.com';
-      dict['pass@122'] = 'Vikas@gmail.com';
-      dict['pass@123'] = 'jaydip@gmail.com';
-      dict['pass@124'] = 'admin.@gmail.com';
-      dict['pass@125'] = 'canteen@gmail.com';
-
-function fun(){
-  
-  var gmail=document.getElementById('email');
-  var password=document.getElementById('password');
-
-  if (gmail !== dict[password]) {
-    console.log("Email/Password is incorrect");
-  }
-
-  if (gmail === 'admin.@gmail.com') {
-    window.open('/Admin/Admin.html')
-  }
-
-  if (gmail === 'canteen.@gmail.com') {
-    window.open('/CanteenStaff/canteenstaf.html');
-  }
-
-  window.open('/StudentAndStaff/Menu.html');
-};
-    </script>
+    <link rel="icon" href="../StudentAndStaff/img/fcritlogo.png">
     <link
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
     />
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+      rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+      crossorigin="anonymous">
     <style>
       * {
         box-sizing: border-box;
@@ -123,16 +114,16 @@ function fun(){
     <div id="container">
       <div class="form-wrap">
         <h1>Login</h1>
-        <form action="Signup.js" method="post">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
           <div class="form-group" >
-            <label for="email" id="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <label for="username" id="username">Username</label>
+            <input type="text" name="username" id="username" />
           </div>
           <div class="form-group">
             <label for="password" id="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="pass" id="pass" />
           </div>
-        <button type="submit" class="btn" onClick="fun()"> Login</button>
+          <button type="submit" class="btn" name="submit"> Login</button>
         </form>
       </div>
     </div>

@@ -1,3 +1,19 @@
+<?php
+include('../Signup/session.php');
+if(!isset($_SESSION['login_user'])){
+header("location: loginpage.php"); // Redirecting To Home Page
+}else {
+  $username = $_SESSION['login_user'];
+  $query = "SELECT * FROM costumers WHERE username='$username'";
+  $query_run = mysqli_query($conn, $query);
+
+  while ($row = mysqli_fetch_array($query_run)) {
+    $userid = $row['id'];
+    $balance = $row['Balance'];
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +23,19 @@
   <meta name="description" content="Welcome to the most extraordinary hotel in Boston Massachusetts">
   <meta name="keywords" content="hotel,boston hotel,new england hotel">
   <link rel="icon" href="./img/fcritlogo.png">
-  <link rel="stylesheet" href="../Signup/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>FCRIT Canteen | Menu</title>
 </head>
 <body>
   <header>
     <nav id="navbar">
       <div class="container">
-        <h1 class="logo"><a href="index.html">FCRIT Canteen</a></h1>
+        <h1 class="logo">FCRIT Canteen</h1>
         <ul>
-          <li><a class="current" href="Menu.html">Menu</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <!-- <li><a href="index.html">Home</a></li> -->
+          <li><a class="current" href="Menu.php">Menu</a></li>
+          <li><a href="../Signup/contact.php">Contact</a></li>
+          <li><a href="../Signup/logout.php"><h4>LOGOUT</h4> </a></li>
         </ul>
       </div>
     </nav>
@@ -31,31 +49,19 @@
       </div>
       <div class="info-right">
         <!-- <img src="./img/photo-2.jpg" alt="hotel"> -->
-        <h3 class="text-primary class="l-heading">Your Balance</h3>
-        <h3 class="text-primary" class="l-heading" >1234 &#8377;</h3>
+        <h3 class="text-primary" class="l-heading">Your Balance</h3>
+        <?php
+        echo '<h3 class="text-primary" class="l-heading" >&#8377;'.$balance.'</h3>';
+        ?>
       </div>
     </div>
   </section>
 
-  <div class="clr"></div>
-
   <section id="testimonials" class="py-3">
     <div class="container">
       
-      <h2 class="l-heading">Our Menu</h2>
+      <h2 class="l-heading">Breakfast</h2>
       
-      <div class="testimonial bg-primary">
-        <img src="./img/dish-1.jpg" alt="Samantha">
-        <strong><i>red sause pasta</i></strong>
-        <p>
-          A great classic italian flavours that will blow your mouth with the burst of classic flavours
-          <div>
-            <Strong>Price: 180  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-          </div>
-        </p>
-      </div>
-
       <div class="testimonial bg-primary">
         <img src="./img/dish-1.jpg" alt="Samantha">
         <strong><i>red sause pasta</i></strong>
@@ -78,18 +84,7 @@
             </div>
           </p>
       </div>
-      
-      <div class="testimonial bg-primary">
-        <img src="./img/dish-2.jpg" alt="Jen">
-        <strong><i>pav bhaji</i></strong>
-        <p>Pav Bhaji is a spicy mashed vegetable dish, served piping hot with a dollop of butter, diced red onions, cilantro and a squeeze of lime. Accompanied by warm buttery pan-toasted pavs!!
-          <div>
-            <Strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Price: 156  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-          </div>
-        </p>
-    </div>
-
+    
     </div>
 
   </section>
