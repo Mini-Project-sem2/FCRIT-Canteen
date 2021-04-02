@@ -21,7 +21,7 @@ if(isset($_SESSION['login_user'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FCRIT Canteen | Login</title>
-    <link rel="icon" href="../StudentAndStaff/img/fcritlogo.png">
+    <link rel="icon" href="css/fcritlogo.png">
     <link
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"

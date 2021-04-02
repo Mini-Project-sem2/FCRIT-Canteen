@@ -11,9 +11,14 @@ header("location: loginpage.php"); // Redirecting To Home Page
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="css/fcritlogo.png">
     <title>Admin</title>
     <link rel="stylesheet" href="canteenadminpanel.css">
     <style>
+        a {
+      color: #333;
+      text-decoration: none;
+      }
         table, th, td {
             border: 2px solid black;
             border-collapse: collapse;
@@ -123,7 +128,7 @@ header("location: loginpage.php"); // Redirecting To Home Page
         </tr>
         <tr>
             <td  >
-                <button style=" font-size: 20px;" class="button button1" href="updatemenu.php" >UPDATE MENU</button>
+                <button style=" font-size: 20px;" class="button button1"><a href="updatemenu.php">UPDATE MENU</a></button>
                 <button style=" font-size: 20px;" class="button button2">E-Wallet Recharge</button>
             </td>
         </tr>

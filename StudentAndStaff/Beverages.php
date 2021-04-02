@@ -69,7 +69,7 @@ header("location: loginpage.php"); // Redirecting To Home Page
          Lassi, a creamy, frothy yogurt-based drink, blended with water and various fruits or seasonings!!!
           <div>
             <Strong>Price: 40  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
+            <a href="Menu.html" class="btn btn-Menu"> <i>ORDER</i> </a> 
           </div>
         </p>
       </div>

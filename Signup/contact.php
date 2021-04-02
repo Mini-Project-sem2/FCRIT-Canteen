@@ -14,7 +14,7 @@ header("location: loginpage.php"); // Redirecting To Home Page
   <meta name="description" content="Welcome to the most extraordinary hotel in Boston Massachusetts">
   <meta name="keywords" content="hotel,boston hotel,new england hotel">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  <link rel="icon" href="../StudentAndStaff/img/fcritlogo.png">
+  <link rel="icon" href="css/fcritlogo.png">
   <link rel="stylesheet" href="../Signup/css/style.css">
   <title>FCRIT Canteen | Contact</title>
 </head>

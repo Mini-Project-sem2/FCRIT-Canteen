@@ -13,6 +13,38 @@ header("location: loginpage.php"); // Redirecting To Home Page
   }
 }
 
+class MENU{
+  public $userid;
+  public $username;
+  public $foodid;
+  public $foodname;
+  public $quantity;
+  public $price;
+
+  function order($foodid,$foodname,$quantity,$price){
+    global $username;
+    global $userid;
+    global $balance;
+    $cprice=$quantity*$price;
+    if ($cprice<$balance) {
+      echo "insuffient balance";
+    } else {
+      $conn=mysqli_connect("localhost", "root", "", "canteendb");
+      $query = "INSERT INTO currorderlist VALUES($userid,$username,$foodname,$foodid,$quantity,$cprice)";
+      $query2 = "INSERT INTO orderlist VALUES($userid,$username,$foodname,$foodid,$quantity,$cprice,'ordered')";
+      $query_run = mysqli_query($conn, $query);
+      $query_run2 = mysqli_query($conn, $query2);
+      if ($query_run || $query_run2) {
+          header("location: menu.php");
+      } else {
+        echo 'error occored';
+      }
+      
+      $balance=$balance-$cprice;
+    }
+    
+  } 
+} 
 ?>
 
 </html>

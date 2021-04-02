@@ -21,9 +21,6 @@ if (isset($_POST['submit'])) {
       $stmt->bind_result($username, $password);
       $stmt->store_result();
       if($stmt->fetch()){ //fetching the contents of the row 
-         // $_SESSION['login_user'] = $username; // Initializing Session
-         // echo $username;
-         // header("location: contact.php"); // Redirecting To Profile Page
          $_SESSION['login_user'] = $username; // Initializing Session
          if($username == 'admin'){
             header("location: adminp.php");
@@ -36,16 +33,5 @@ if (isset($_POST['submit'])) {
             mysqli_close($conn); // Closing Connection
          }
       }
-      // $_SESSION['login_user'] = $username; // Initializing Session
-      // if($username == 'admin'){
-      //    header("location: admin.php");
-      //    mysqli_close($conn); // Closing Connection
-      // }elseif ($username == 'canteen') {
-      //    header("location: canteen.php"); // Redirecting To Profile Page
-      //    mysqli_close($conn); // Closing Connection
-      // }else {
-      //    header("location: Menu.php"); // Redirecting To Profile Page
-      //    mysqli_close($conn); // Closing Connection
-      // }
    }
 }

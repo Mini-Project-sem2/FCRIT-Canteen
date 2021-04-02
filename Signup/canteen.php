@@ -1,17 +1,21 @@
+<?php
+    $url=$_SERVER['REQUEST_URI'];
+    header("Refresh: 10; URL=$url");
+?>
+
 <!DOCTYPE html>
+<html>
 <html>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/StudentAndStaff/img/fcritlogo.png">
+    <link rel="icon" href="css/fcritlogo.png">
     <title>FCRIT Canteen | CanteenStaff</title>
     <style>
-      tyle>
-      table {
+      /* table {
         width: 100%;
-        height: 700px;
-      }
+      } */
       a {
       color: #333;
       text-decoration: none;
@@ -19,6 +23,7 @@
       table,
       th,
       td {
+        text-align: center;
         border: 2px solid black;
         border-collapse: collapse;
       }
@@ -36,7 +41,7 @@
         cursor: pointer;
       }
       .button:hover {
-        background: #f7c08a;
+        background: #CDCDCD;
         color: #333;
       }
       .button1 {
@@ -69,44 +74,11 @@
       <td style="width: auto">Status</td>
 <?php
 
-// class TableRows extends RecursiveIteratorIterator {
-//     function __construct($it) {
-//         parent::__construct($it, self::LEAVES_ONLY);
-//     }
-
-//     function current() {
-//         return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-//     }
-
-//     function beginChildren() {
-//         echo "<tr>";
-//     }
-
-//     function endChildren() {
-//         echo "</tr>" . "\n";
-//     }
-// }
-
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "canteendb";
     $conn = mysqli_connect("localhost", "root", "", "canteendb");
-    // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // $stmt = $conn->prepare("SELECT userid, username,  Foodname, FoodId,Quantity ,Price FROM currorderlist");
-    // $stmt->execute();
-
-    // // set the resulting array to associative
-    // $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-    // foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-    //     echo $v;
-    // //     echo '<td style="width auto">
-    // //     <button class="button button1">delivered</button>
-    // //     <button class="button button2">refund</button>
-    // //     <button class="button button3">cancel</button>
-    // //   </td>';
-    // }
     $query = "SELECT * FROM currorderlist";
     $query_run = mysqli_query($conn, $query);
     if (!$query_run) {
@@ -127,10 +99,10 @@ $dbname = "canteendb";
               <td>'.$foodid.'</td>
               <td>'.$quantity.'</td>
               <td>'.$price.'</td>
-              <td><button class="button button2" ><a href="delete.php?userid='.$userid.'&foodid='.$foodid.'">dilivered</a></button></td>
+              <td><button class="button button2" ><a href="delete.php?userid='.$userid.'&foodid='.$foodid.'">delivered</a></button></td>
             </tr>';
     }
-echo "</table>";
+    echo "</table>";
 ?> 
 <br />
   </body>
