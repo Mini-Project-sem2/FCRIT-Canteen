@@ -129,7 +129,7 @@ header("location: loginpage.php"); // Redirecting To Home Page
         <tr>
             <td  >
                 <button style=" font-size: 20px;" class="button button1"><a href="updatemenu.php">UPDATE MENU</a></button>
-                <button style=" font-size: 20px;" class="button button2"><a href="Walletrecharge.php">E-Wallet Recharge</a></button>
+                <button style=" font-size: 20px;" class="button button2"><a href="../Signup/recharge.php">E-Wallet Recharge</a></button>
             </td>
         </tr>
     </table>

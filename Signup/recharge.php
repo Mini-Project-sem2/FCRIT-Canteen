@@ -16,10 +16,12 @@ if (isset($_POST['submit'])) {
        if(!$query_run) {
           printf("Error: %s\n", mysqli_error($conn));
           exit();
+        }else {
+          header("location: adminp.php");
         }
     }
 } 
-header("location: adminp.php");
+
 ?>
 
 <DOCTYPE html>

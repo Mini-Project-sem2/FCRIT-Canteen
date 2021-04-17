@@ -1,9 +1,9 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "canteendb");
-// $foodid = $_GET['fid'];
-// $username = $_GET['un'];
-$foodid = 301;
-$username = "farhan";
+// $fid = $_GET['fid'];
+// $uname = $_GET['un'];
+$foodid = 302;
+$username = 'Farhan';
 //echo "ok";
 if (isset($_POST['submit'])) {
     if (empty($_POST['quantity'])) {
