@@ -27,9 +27,6 @@ header("location: loginpage.php"); // Redirecting To Home Page
           <li><a href="../StudentAndStaff/Menu.php">Menu</a></li>
           <li><a class="current" href="contact.php">Contact</a></li>
           <li><a href="profile.php">Profile</a></li>
-          <li><a href="../Signup/logout.php">
-              <h4>LOGOUT</h4>
-            </a></li>
           <li><a href="logout.php"><h4>LOGOUT</h4></a></li>
         </ul>
       </div>
