@@ -1,31 +1,35 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "canteendb");
-
-
-
+// $foodid = $_GET['fid'];
+// $username = $_GET['un'];
+$foodid = 301;
+$username = "farhan";
+//echo "ok";
 if (isset($_POST['submit'])) {
     if (empty($_POST['quantity'])) {
         $error = "quatity need to be input";
     } else {
-        $foodid = $_GET['fid'];
-        $username = $_GET['un'];
-        date_default_timezone_get();
+        //echo "ok";
+        date_default_timezone_set('Asia/Kolkata');
         $date = date('m/d/Y h:i:s a', time());
         $quantity = $_POST['quantity'];
-        $conn = mysqli_connect("localhost", "root", "", "canteendb");
-        $gprice = "SELECT * FROM MENU WHERE Fid= '$foodid'";
+        global $foodid, $conn;
+        $gprice = "SELECT * FROM MENU WHERE `MENU`.`Fid`= '$foodid'";
         $qprice = mysqli_query($conn, $gprice);
         if (!$qprice) {
             printf("Error: %s\n", mysqli_error($conn));
             exit();
         }
         while ($row = mysqli_fetch_array($qprice)) {
+            // echo "ok";
             $fname = $row['Fname'];
             $price = $row['Price'];
+            $price = $price;
             $bill = $price * $quantity;
-            $gbal = "SELECT * FROM COSTUMERS WHERE username='$username'";
+            global $username;
+            $gbal = "SELECT * FROM COSTUMERS WHERE `COSTUMERS`.`username`= '$username'";
             $gbal_run = mysqli_query($conn, $gbal);
-            if (!$qbal_run) {
+            if (!$gbal_run) {
                 printf("Error: %s\n", mysqli_error($conn));
                 exit();
             }
@@ -33,9 +37,10 @@ if (isset($_POST['submit'])) {
                 $userid = $row['id'];
                 $balance = $row['Balance'];
                 if ($balance >= $bill) {
-                    $query1 = "INSERT INTO orderlist values($userid,'$username','$fname',$foodid,$quantity,$bill,'Ordered','$date',NULL)";
-                    $query2 = "INSERT INTO currorderlist values($userid,'$username','$fname',$foodid,$quantity,$bill)";
-                    $query3 = "UPDATE costumers SET Balance = Balance - $bill WHERE id=$userid ";
+                    global $userid, $username, $foodid, $foodname, $quantity, $bill, $date;
+                    $query1 = "INSERT INTO `orderlist` values($userid,'$username','$fname',$foodid,$quantity,$bill,'Ordered','$date',NULL)";
+                    $query2 = "INSERT INTO `currorderlist` values($userid,'$username','$fname',$foodid,$quantity,$bill)";
+                    $query3 = "UPDATE `COSTUMERS` SET `COSTUMERS`.`Balance` = `COSTUMERS`.`Balance` - $bill WHERE id=$userid ";
                     $query1_run =  mysqli_query($conn, $query1);
                     if (!$query1_run) {
                         printf("Error: %s\n", mysqli_error($conn));
@@ -51,14 +56,16 @@ if (isset($_POST['submit'])) {
                         printf("Error: %s\n", mysqli_error($conn));
                         exit();
                     }
+                    header("location:  Menu.php");
                 } else {
                     echo "<Script>alert('Insufficient balance')</script>";
                 }
-                header("location:  Menu.php");
             }
         }
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -163,4 +170,4 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
-<!-- INSERT INTO orderlist values(1019128,'Farhan','pav bhaji',102,1,156,'Ordered',NULL,NULL) -->
+<!-- INSERT INTO orderlist values(1019128,'Farhan','pav bqhaji',102,1,156,'Ordered',NULL,NULL) -->
