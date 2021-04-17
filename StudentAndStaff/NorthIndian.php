@@ -82,7 +82,7 @@ header("location: loginpage.php"); // Redirecting To Home Page
           <p>Indian Aloo Paratha – whole wheat flatbread stuffed with a spicy potato filling. This paratha is best enjoyed with yogurt, pickle and butter.
             <div>
               <Strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Price: 156  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-              <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
+              <a href="Menu.html" class="btn btn-Menu" onclick="<?php  ?>"> <i>ORDER</i> </a> 
             </div>
           </p>
       </div>

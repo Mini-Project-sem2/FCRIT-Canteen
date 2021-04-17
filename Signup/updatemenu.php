@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
           exit();
         }
       }else{
-        $query='DEELETE FROM MENU WHERE Fname=$fname';
+        $query="DELETE FROM MENU WHERE Fname= $fname";
         $query_run = mysqli_query($conn, $query);
         if (!$query_run) {
           printf("Error: %s\n", mysqli_error($conn));
@@ -115,6 +115,23 @@ if (isset($_POST['submit'])) {
         margin-top: 20px;
       }
 
+      .radio{
+        text-align: left;
+        margin-left: 20px;
+      }
+
+      #add{
+        margin-left: 40px; 
+      }
+
+      #addl{
+        margin-right: 20px; 
+      }
+
+      #delete{
+        margin-left: 20px; 
+      }
+
       footer {
         text-align: center;
         margin-top: 10px;
@@ -131,13 +148,13 @@ if (isset($_POST['submit'])) {
       <div class="form-wrap">
         <h1>UPDATE MENU</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-          <div class="form-group">
+          <div class="form-group,radio">
             <label for="update" id="update">UPDATE</label>
             <div>
               <input type="radio" id="add" name="update" value="add">
-              <label for="add">ADD</label>
+              <label for="add" id="addl">ADD</label>
               <input type="radio" id="delete" name="update" value="delete">
-              <label for="delete">DELETE</label>
+              <label for="delete" id="dell" >DELETE</label>
             </div>
           </div>
           <div class="form-group">

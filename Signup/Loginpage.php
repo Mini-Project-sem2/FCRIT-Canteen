@@ -8,7 +8,7 @@ if(isset($_SESSION['login_user'])){
     header("location: canteen.php"); // Redirecting To Profile Page
     mysqli_close($conn); // Closing Connection
  }else {
-    header("location:  contact.php"); // Redirecting To Profile Page
+    header("location:  profile.php"); // Redirecting To Profile Page
     mysqli_close($conn); // Closing Connection
  }
 }

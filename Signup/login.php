@@ -5,7 +5,8 @@ session_start(); // Starting Session
 $error = ''; // Variable To Store Error Message
 if (isset($_POST['submit'])) { 
    if (empty($_POST['username']) || empty($_POST['pass'])) {
-      $error = "Username or Password is invalid";
+      $error = "Username or Password is empty";
+      echo "<Script>alert('$error')</script>";
    }else{
       // Define $username and $password
       $username = $_POST['username'];
