@@ -68,6 +68,7 @@ class MENU{
         <ul>
           <li><a class="current" href="Menu.php">Menu</a></li>
           <li><a href="../Signup/contact.php">Contact</a></li>
+          <li><a href="../Signup/profile.php">Profile</a></li>
           <li><a href="../Signup/logout.php"><h4>LOGOUT</h4> </a></li>
         </ul>
       </div>

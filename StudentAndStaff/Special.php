@@ -30,11 +30,14 @@ header("location: loginpage.php"); // Redirecting To Home Page
   <header>
     <nav id="navbar">
       <div class="container">
-        <h1 class="logo"><a href="index.html">FCRIT Canteen</a></h1>
+        <h1 class="logo"><a>FCRIT Canteen</a></h1>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a class="current" href="Menu.html">Menu</a></li>
-          <li><a href="contact.html">Contact</a></li>
+        <li><a class="current" href="Menu.php">Menu</a></li>
+          <li><a href="../Signup/contact.php">Contact</a></li>
+          <li><a href="../Signup/profile.php">Profile</a></li>
+          <li><a href="../Signup/logout.php">
+              <h4>LOGOUT</h4>
+            </a></li>
         </ul>
       </div>
     </nav>
