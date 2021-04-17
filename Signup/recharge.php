@@ -1,8 +1,4 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "canteendb";
 $conn = mysqli_connect("localhost", "root", "", "canteendb");
 $error = ''; // Variable To Store Error Message
 if (isset($_POST['submit'])) {
@@ -11,17 +7,17 @@ if (isset($_POST['submit'])) {
     }else {
         $username = $_POST['username'];
         $amount = $_POST['amount'];
-        $query = "UPDATE costumers SET Balance=Balance+$amount WHERE username='$username'";
+        $query = "UPDATE costumers SET Balance = Balance + $amount WHERE username='$username'";
         $query_run = mysqli_query($conn, $query);
        if(!$query_run) {
           printf("Error: %s\n", mysqli_error($conn));
           exit();
         }else {
+          echo "<script>alert('recharge of &#8377; $amount is done')</script>";
           header("location: adminp.php");
         }
     }
 } 
-
 ?>
 
 <DOCTYPE html>
