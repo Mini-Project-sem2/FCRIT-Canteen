@@ -47,6 +47,8 @@ FoodId INT NOT NULL UNIQUE ,
 Quantity INT,
 price INT,
 Order_Status varchar(10),
+orderdate varchar(15),
+diliverdate varchar(15)
 );
 
 CREATE TABLE CurrOrderlist (
