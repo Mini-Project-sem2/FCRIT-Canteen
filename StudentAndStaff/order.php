@@ -1,10 +1,12 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "canteendb");
-// $fid = $_GET['fid'];
-// $uname = $_GET['un'];
-$foodid = 302;
-$username = 'Farhan';
-//echo "ok";
+$fid = $_GET['fid'];
+$uname = $_GET['un'];
+$foodid = $fid;
+$username = $uname;
+$_SESSION['login_user'] = $username;
+?>
+<?php
 if (isset($_POST['submit'])) {
     if (empty($_POST['quantity'])) {
         $error = "quatity need to be input";
@@ -56,7 +58,7 @@ if (isset($_POST['submit'])) {
                         printf("Error: %s\n", mysqli_error($conn));
                         exit();
                     }
-                    header("location:  Menu.php");
+                    header("location: ../Signup/profile.php");
                 } else {
                     echo "<Script>alert('Insufficient balance')</script>";
                 }

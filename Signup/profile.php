@@ -1,12 +1,11 @@
 <?php
-include('../Signup/session.php');
+include('session.php');
 if (!isset($_SESSION['login_user'])) {
   header("location: loginpage.php"); // Redirecting To Home Page
 } else {
   $username = $_SESSION['login_user'];
   $query = "SELECT * FROM costumers WHERE username='$username'";
   $query_run = mysqli_query($conn, $query);
-
   while ($row = mysqli_fetch_array($query_run)) {
     $userid = $row['id'];
     $balance = $row['Balance'];
@@ -78,29 +77,25 @@ if (!isset($_SESSION['login_user'])) {
   <section id="profile" class="py-3">
     <div class="container">
       <h1 class="l-heading"><span class="text-primary">Profile</span></h1>
-      <div class="info-right">
-        <!-- <img src="./img/photo-2.jpg" alt="hotel"> -->
+      <div class="info-right"> 
         <h3 class="text-primary" class="l-heading">username:</h3>
         <?php
         echo '<h3 class="text-primary" style="color:black;" >' . $username . '</h3>';
         ?>
       </div>
       <div class="info-right">
-        <!-- <img src="./img/photo-2.jpg" alt="hotel"> -->
         <h3 class="text-primary" class="l-heading">userid:</h3>
         <?php
         echo '<h3 class="text-primary" style="color:black;" >' . $userid . '</h3>';
         ?>
-      </div>
+      </div> 
       <div class="info-right">
-        <!-- <img src="./img/photo-2.jpg" alt="hotel"> -->
         <h3 class="text-primary" class="l-heading">Your Balance:</h3>
         <?php
         echo '<h3 class="text-primary" style="color:black;" >' . $balance . '</h3>';
         ?>
       </div>
       <div class="info-right">
-        <!-- <img src="./img/photo-2.jpg" alt="hotel"> -->
         <h3 class="text-primary" class="l-heading">Order History</h3>
           <table>
             <tr>
@@ -146,7 +141,7 @@ if (!isset($_SESSION['login_user'])) {
     </div>
   </section>
 
-  <section id="contact-info" class="bg-dark">
+  <!-- <section id="contact-info" class="bg-dark">
     <div class="container">
       <div class="box">
         <i class="fas fa-hotel fa-3x"></i>
@@ -167,7 +162,7 @@ if (!isset($_SESSION['login_user'])) {
         <p>principal@fcrit.ac.in</p>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <footer id="main-footer">
     <p>FCRIT Canteen &copy; 2020, All RIghts Reserved</p>

@@ -33,6 +33,9 @@ if (isset($_POST['submit'])) {
             header("location: contact.php"); // Redirecting To Profile Page
             mysqli_close($conn); // Closing Connection
          }
+      }else{
+         $error = "Username or Password is invalid";
+         echo "<Script>alert('$error')</script>";  
       }
    }
 }

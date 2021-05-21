@@ -13,7 +13,6 @@ if (isset($_POST['submit'])) {
           printf("Error: %s\n", mysqli_error($conn));
           exit();
         }else {
-          echo "<script>alert('recharge of &#8377; $amount is done')</script>";
           header("location: adminp.php");
         }
     }
@@ -119,7 +118,7 @@ if (isset($_POST['submit'])) {
   <body>
     <div id="container">
       <div class="form-wrap">
-        <h1>Login</h1>
+        <h1>Recharge</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
           <div class="form-group" >
             <label for="username" id="username">Username</label>

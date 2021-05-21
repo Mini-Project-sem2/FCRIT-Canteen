@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
           exit();
         }
       }else{
-        $query="DELETE FROM MENU WHERE Fname= $fname";
+        $query="DELETE FROM MENU WHERE Fname= '$fname'";
         $query_run = mysqli_query($conn, $query);
         if (!$query_run) {
           printf("Error: %s\n", mysqli_error($conn));
