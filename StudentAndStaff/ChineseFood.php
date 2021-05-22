@@ -65,29 +65,31 @@ header("location: loginpage.php"); // Redirecting To Home Page
       
       <h2 class="l-heading">Our Menu</h2>
       
-      <div class="testimonial bg-primary">
-        <img src="hakka.jpg" alt="Hakka Noodles">
-        <strong><i>Hakka Noodles</i></strong>
-        <p>
-         The most sophisticated version of the common ChowMien. The Noodles are stir fried with Vegetables, Soy sauce, sometimes Eggs and Chicken too.
-          <div>
-            <Strong>Price: 70  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-          </div>
-        </p>
-      </div>
+      <?php
+      $query = "SELECT * FROM menu WHERE Fid BETWEEN 400 AND 500";
+      $query_run = mysqli_query($conn, $query);
 
-      <div class="testimonial bg-primary">
-          <img src="fried.jpg" alt="Schezwan Fried Rice">
-          <strong><i>Schezwan Fried Rice </i></strong>
-          <p> schezwan fried rice is hot & spicy with bursting flavors of ginger, garlic, soya sauce & red chilli paste!!!
-            <div>
-              <Strong>Price: 100  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-              <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-            </div>
-          </p>
-      </div>
-    
+      while ($row = mysqli_fetch_array($query_run)) {
+        $img = $row['menu_img'];
+        $fd = $row['Fdes'];
+        $fn = $row['Fname'];
+        $price = $row['Price'];
+        $fid = $row['Fid'];
+        echo '
+       <div class="testimonial bg-primary">
+       
+        <img src="data:image/jpeg;base64,' . base64_encode($img) . '">
+        <strong><i>' . $fn . '</i></strong>
+        <p>
+          ' . $fd . '
+        <div>
+          <Strong>Price: ' . $price . ' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
+          <button><a class="btn btn-Menu " href="order.php?fid=' . $fid . '&un=' . $username . '"> <i>ORDER</i> </a></button>
+        </div>
+        </p>
+      </div>';
+      }
+      ?>
     </div>
 
   </section>

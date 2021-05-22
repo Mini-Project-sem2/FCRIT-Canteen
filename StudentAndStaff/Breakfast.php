@@ -63,31 +63,31 @@ header("location: loginpage.php"); // Redirecting To Home Page
       
       <h2 class="l-heading">Breakfast</h2>
       
-      <div class="testimonial bg-primary">
-        <img src="./img/dish-1.jpg" alt="Samantha">
-        <strong><i>red sause pasta</i></strong>
+      <?php
+      $query = "SELECT * FROM menu WHERE Fid BETWEEN 100 AND 200";
+      $query_run = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_array($query_run)) {
+        $img = $row['menu_img'];
+        $fd = $row['Fdes'];
+        $fn = $row['Fname'];
+        $price = $row['Price'];
+        $fid = $row['Fid'];
+        echo '
+       <div class="testimonial bg-primary">
+       
+        <img src="data:image/jpeg;base64,' . base64_encode($img) . '">
+        <strong><i>' . $fn . '</i></strong>
         <p>
-          A great classic italian flavours that will blow your mouth with the burst of classic flavours
-          <div>
-            <Strong>Price: 180  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-          </div>
+          ' . $fd . '
+        <div>
+          <Strong>Price: ' . $price . ' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
+          <button><a class="btn btn-Menu " href="order.php?fid=' . $fid . '&un=' . $username . '"> <i>ORDER</i> </a></button>
+        </div>
         </p>
-      </div>
-
-      <div class="testimonial bg-primary">
-          <img src="./img/dish-2.jpg" alt="Jen">
-          <strong><i>pav bhaji</i></strong>
-          <p>Pav Bhaji is a spicy mashed vegetable dish, served piping hot with a dollop of butter, diced red onions, cilantro and a squeeze of lime. Accompanied by warm buttery pan-toasted pavs!!
-            <div>
-              <Strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Price: 156  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-              <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-            </div>
-          </p>
-      </div>
-    
-    </div>
-
+      </div>';
+      }
+      ?>
   </section>
 
   <footer id="main-footer">

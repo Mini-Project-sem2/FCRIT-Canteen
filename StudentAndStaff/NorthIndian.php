@@ -64,32 +64,32 @@ header("location: loginpage.php"); // Redirecting To Home Page
     <div class="container">
       
       <h2 class="l-heading">North Indian Cuisine</h2>
-      
-      <div class="testimonial bg-primary">
-        <img src="tandoori.jpg" alt="Samantha">
-        <strong><i>Tandoori</i></strong>
+      <?php
+      $query = "SELECT * FROM menu WHERE Fid BETWEEN 200 AND 300";
+      $query_run = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_array($query_run)) {
+        $img = $row['menu_img'];
+        $fd = $row['Fdes'];
+        $fn = $row['Fname'];
+        $price = $row['Price'];
+        $fid = $row['Fid'];
+        echo '
+       <div class="testimonial bg-primary">
+       
+        <img src="data:image/jpeg;base64,' . base64_encode($img) . '">
+        <strong><i>' . $fn . '</i></strong>
         <p>
-         A classic Indian chicken that is marinated with Indian spices until well coated and then cooked in an Indian oven called the tandoor as it is popularly known.
-          <div>
-            <Strong>Price: 180  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-            <a href="Menu.html" class="btn btn-Menu "> <i>ORDER</i> </a> 
-          </div>
+          ' . $fd . '
+        <div>
+          <Strong>Price: ' . $price . ' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
+          <button><a class="btn btn-Menu " href="order.php?fid=' . $fid . '&un=' . $username . '"> <i>ORDER</i> </a></button>
+        </div>
         </p>
-      </div>
-
-      <div class="testimonial bg-primary">
-          <img src="aloo.jpg" alt="Jen">
-          <strong><i>Aloo Paratha</i></strong>
-          <p>Indian Aloo Paratha – whole wheat flatbread stuffed with a spicy potato filling. This paratha is best enjoyed with yogurt, pickle and butter.
-            <div>
-              <Strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Price: 156  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-              <a href="Menu.html" class="btn btn-Menu" onclick="<?php  ?>"> <i>ORDER</i> </a> 
-            </div>
-          </p>
-      </div>
-    
+      </div>';
+      }
+      ?>
     </div>
-
   </section>
 
   <footer id="main-footer">

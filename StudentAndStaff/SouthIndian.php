@@ -28,13 +28,13 @@ if (!isset($_SESSION['login_user'])) {
 </head>
 
 <body>
-<script type="text/javascript">
+  <script type="text/javascript">
     // Popup window code
     function newPopup(url) {
       popupWindow = window.open(
         url, 'popUpWindow', 'height=600,width=600,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
-      }
-    </script>
+    }
+  </script>
   <header>
     <nav id="navbar">
       <div class="container">
@@ -75,37 +75,30 @@ if (!isset($_SESSION['login_user'])) {
 
       <h2 class="l-heading">South Indian Cusine</h2>
       <?php
-       $query = "SELECT * FROM costumers WHERE username='$username'";
-       $query_run = mysqli_query($conn, $query);
-     
-      echo '
-      <div class="testimonial bg-primary">
+      $query = "SELECT * FROM menu WHERE Fid BETWEEN 300 AND 400";
+      $query_run = mysqli_query($conn, $query);
+
+      while ($row = mysqli_fetch_array($query_run)) {
+        $img = $row['menu_img'];
+        $fd = $row['Fdes'];
+        $fn = $row['Fname'];
+        $price = $row['Price'];
+        $fid = $row['Fid'];
+        echo '
+       <div class="testimonial bg-primary">
        
-        <img src="dosa.jpg" alt="dosa">
-        <strong><i>Masala Dosa</i></strong>
+        <img src="data:image/jpeg;base64,' . base64_encode($img) . '">
+        <strong><i>' . $fn . '</i></strong>
         <p>
-          The king of all dosas! Listed as one of the world'.'s most delicious foods, a masala dosa never fails to impress!
+          ' . $fd . '
         <div>
-          <Strong>Price: 60 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-          <button><a class="btn btn-Menu " href="JavaScript:newPopup('.'Order.php?fid=301&bal='.$balance.''.');"> <i>ORDER</i> </a></button>
+          <Strong>Price: ' . $price . ' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
+          <button><a class="btn btn-Menu " href="order.php?fid=' . $fid . '&un=' . $username . '"> <i>ORDER</i> </a></button>
         </div>
         </p>
-      </div>
-
-      <div class="testimonial bg-primary">
-        <img src="bir.jpg" alt="biryani">
-        <strong><i>Hyderabadi chicken biryani</i></strong>
-        <p>Hyderabadi chicken biryani is an aromatic, mouth watering and authentic Indian dish with succulent chicken in layers of fluffy rice, fragrant spices and fried onions!!
-        <div>
-          <Strong>Price: 120 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</Strong>
-          <button><a class="btn btn-Menu " href="order.php?fid=302&un='.$username.'"> <i>ORDER</i> </a></button>
-        </div>
-        </p>
-      </div>
-
-    </div>';
-    
-    ?>
+      </div>';
+      }
+      ?>
   </section>
 
   <footer id="main-footer">

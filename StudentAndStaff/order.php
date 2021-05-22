@@ -1,10 +1,5 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "canteendb");
-$fid = $_GET['fid'];
-$uname = $_GET['un'];
-$foodid = $fid;
-$username = $uname;
-$_SESSION['login_user'] = $username;
 ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -15,7 +10,9 @@ if (isset($_POST['submit'])) {
         date_default_timezone_set('Asia/Kolkata');
         $date = date('m/d/Y h:i:s a', time());
         $quantity = $_POST['quantity'];
-        global $foodid, $conn;
+        $foodid = $_POST['fid'];
+        $username = $_POST['un'];
+        global $conn;
         $gprice = "SELECT * FROM MENU WHERE `MENU`.`Fid`= '$foodid'";
         $qprice = mysqli_query($conn, $gprice);
         if (!$qprice) {
@@ -164,6 +161,12 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                     <label for="quantity" id="quantity">Quantity</label>
                     <input type="numeric" name="quantity" id="quantity" />
+                    <?php
+                    $fid = $_GET['fid'];
+                    $uname = $_GET['un'];
+                    echo '<input type="hidden" name="fid" id="fid" value='.$fid.' />';
+                    echo '<input type="hidden" name="un" id="un" value='.$uname.' />';
+                    ?>
                 </div>
                 <button type="submit" class="btn" name="submit">conform order</button>
             </form>
